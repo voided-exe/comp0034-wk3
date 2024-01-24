@@ -46,3 +46,6 @@ class User(db.Model):
     id: Mapped[int] = mapped_column(db.Integer, primary_key=True)
     email: Mapped[str] = mapped_column(db.String, unique=True, nullable=False)
     password: Mapped[str] = mapped_column(db.String, unique=True, nullable=False)
+
+    def to_json(self):
+        return json.dumps(self.__dict__)
